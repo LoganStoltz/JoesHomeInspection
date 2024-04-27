@@ -1,66 +1,83 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  /* Style the header */
-  .header {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Style the top navigation bar */
-  .topnav {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  /* Style the topnav links */
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change color on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Create three unequal columns that floats next to each other */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --header-height: 60px;
+  --nav-height: 40px;
+  --column-padding: 10px;
+  --nav-header-combined-height: calc(var(--header-height) + var(--nav-height) + var(--column-padding)*2);
+}
+
+.header {
+  background-color: #f1f1f1;
+  height: var(--header-height);
+  text-align: center;
+}
+
+.topnav {
+  display: flex; /* Use flexbox */
+  overflow: hidden;
+  background-color: #333;
+  height: var(--nav-height);
+}
+
+.topnav a {
+  flex: 1; /* Distribute the available space equally among the links */
+  display: flex; /* Use flexbox */
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.column {
+  padding: var(--column-padding);
+  text-align: center;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
   .column {
-    float: left;
-    padding: 10px;
+    width: 100%;
   }
-  
-  /* Left and right column */
-  .column.side {
-    width: 25%;
-  }
-  
-  /* Middle column */
-  .column.middle {
-    width: 50%;
-  }
-  
-  /* Clear floats after the columns */
-  .row::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column.side, .column.middle {
-      width: 100%;
-    }
-  }
+}
+
+.content-wrapper {
+  height: calc(100vh - var(--nav-header-combined-height));
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+}
+
+.column {
+  flex: 1;
+}
+
+.main {
+  background-color: lightblue; /* Just for visualization */
+}
+
+.left, .right {
+  background-color: lightgreen; /* Just for visualization */
+}
