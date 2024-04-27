@@ -2,19 +2,22 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
+  position: relative;
 }
 
+
 :root {
-  --header-height: 60px;
+  --header-height: 7vh;
+  --header-padding: 1px;
   --nav-height: 40px;
   --column-padding: 10px;
   --nav-header-combined-height: calc(var(--header-height) + var(--nav-height) + var(--column-padding)*2);
 }
 
 .header {
-  background-color: #f1f1f1;
   height: var(--header-height);
   text-align: center;
 }
@@ -80,4 +83,8 @@ body {
 
 .left, .right {
   background-color: lightgreen; /* Just for visualization */
+}
+
+.header{
+  background-color: lightcoral;
 }
